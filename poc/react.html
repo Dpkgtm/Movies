@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <!-- react through -> Dom change -->
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <!-- bebel -> JSX-> js -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+    //Components must be in 
+    // function Hello({name="default"}){
+    //     return(
+    //         <React.Fragment>
+    //             <h1>Hello {name}</h1>
+    //             <p>HOw are you</p>
+    //         </React.Fragment>
+    //     )
+    // }
+    // //hello component render
+    // function Hellos(){
+    //     return(
+    //         <React.Fragment>
+    //         <Hello/>
+    //         <Hello name="name1"/>
+    //             <Hello name="name2"/>
+    //             <Hello name="name3"/>
+    //             <Hello name="name4"/>
+    //             <Hello name="name5"/>
+    //         </React.Fragment>
+        
+    // }
+    // read code from bottom to top 
+    // show on UI
+    class Counter extends React.Component{
+        constructor(props){
+            super(props);
+            this.state={
+                count:0
+            }
+            this.decreament=this.decreament.bind(this);
+            this.increament=this.increament.bind(this);  
+        }
+        increament(){
+            this.setState({
+                count:this.state.count+1
+            })
+        }
+        decreament(){
+            this.setState({
+                count:this.state.count-1
+            })
+    }
+    render(){
+        return(
+            <React.Fragment>
+                <p>{this.state.count}</p>
+                <button onClick={this.increament}>+</button>
+                <button onClick={this.decreament}>-</button>
+                </React.Fragment>
+        )
+    }
+}
+        ReactDOM.render(<Counter/>,document.getElementById("root"));
+    </script>
+</body>
+</html>
